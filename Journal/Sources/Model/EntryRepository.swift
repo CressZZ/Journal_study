@@ -15,8 +15,10 @@ protocol EntryRepository {
     func update(_ entry: EntryType, text: String)
     func remove(_ entry: EntryType)
     
-    func entries(contains string: String) -> [EntryType]
+   
     func entry(with id: UUID) -> EntryType?
+    
+    func entries(contains string: String) -> [EntryType]
     func recentEntries(max: Int) -> [EntryType]
 }
 
