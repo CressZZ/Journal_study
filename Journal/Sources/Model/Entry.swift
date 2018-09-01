@@ -10,22 +10,18 @@ import Foundation
 
 protocol EntryType: Identifiable {
     var createdAt: Date { get }
-    var text: String { get set }
+    var text: String { set get }
 }
-
-extension EntryType { 
-    static func ==(lhs: EntryType, rhs: EntryType) -> Bool {
+extension EntryType {
+    static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
             && lhs.createdAt == rhs.createdAt
-            && lhs.text == rhs.text 
-    }
-}
-
+            && lhs.text == rhs.text
+    } }
 class Entry: EntryType {
     let id: UUID
     let createdAt: Date
     var text: String
-    
     init(id: UUID = UUID(), createdAt: Date = Date(), text: String) {
         self.id = id
         self.createdAt = createdAt

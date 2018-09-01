@@ -21,6 +21,8 @@ protocol EntryRepository {
 class InMemoryEntryRepository: EntryRepository {
     private var entries: [UUID: EntryType]
     
+   
+    
     init(entries: [Entry] = []) {
         var result: [UUID: Entry] = [:]
         
@@ -36,7 +38,7 @@ class InMemoryEntryRepository: EntryRepository {
         return repository
     }()
     
-    var numberOfEntries: Int { 
+    var numberOfEntries: Int {
         return entries.count
     }
     

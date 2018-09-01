@@ -12,6 +12,7 @@ class TimelineViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
     var viewModel: TimelineViewViewModel!
+    private let searchController: UISearchController = UISearchController(searchResultsController: nil)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
@@ -43,6 +44,12 @@ class TimelineViewController: UIViewController {
         
         title = "Journal"
         tableview.delegate = self
+        
+        searchController.searchBar.placeholder = "일기 검색"
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +57,9 @@ class TimelineViewController: UIViewController {
                 
         tableview.reloadData()
     }
+    
+   
+ 
 }
 
 extension TimelineViewController: UITableViewDataSource {
