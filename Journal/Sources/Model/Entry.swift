@@ -32,3 +32,12 @@ class Entry: EntryType {
         self.text = text
     }
 }
+
+extension EntryType {
+    func toDitionary() -> [String: Any] {
+        return [
+            "uuidString": id.uuidString,
+            "createdAt": createdAt.timeIntervalSince1970,
+            "text": text
+        ] }
+}
